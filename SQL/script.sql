@@ -4,7 +4,7 @@ USE dell;
 
 CREATE TABLE userr (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
-    CPF INT NOT NULL,
+    cpf VARCHAR(14) NOT NULL,
     name VARCHAR(255) NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
     lvl_access INT NOT NULL
@@ -33,6 +33,6 @@ ALTER TABLE bet ADD FOREIGN KEY (user_id) REFERENCES userr(user_id);
 ALTER TABLE bet ADD FOREIGN KEY (edition_id) REFERENCES edition(edition_id);
 ALTER TABLE registration ADD FOREIGN KEY (edition_id) REFERENCES edition(edition_id);
 
-ALTER TABLE userr ADD UNIQUE (CPF);
+ALTER TABLE userr ADD UNIQUE (cpf);
 ALTER TABLE registration ADD UNIQUE (registration_nr);
 ALTER TABLE edition ADD UNIQUE (year);

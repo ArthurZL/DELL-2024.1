@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup</title>
+    <link rel="stylesheet" href="../CSS/signup.css?v=1.0">
+    <script type="module" src="../JS/signup.js"></script>
+</head>
+<body>
+    <div class="flex-container">
+        <div class="container">
+            
+            <header class="register">
+                <h1>Registrar-se</h1>
+            </header>
+
+            <form id="form-credentials" class="credentials" action="../PHP/signup.php" method="post">
+
+                <label for="name">Nome: </label>
+                <input id="name" class="input" type="text" name="name">
+
+                <label for="cpf">CPF: </label>
+                <input id="cpf" class="input" type="text" name="cpf">
+
+                <label for="password">Senha: </label>
+                <input id="password" class="input" type="password" name="password">
+
+                <label for="confirm-password">Confirmar Senha: </label>
+                <input id="confirm-password" class="input" type="password" name="confirm-password">
+
+            </form>
+
+            <div class="button-container">
+                <button class="button" type="submit" form="form-credentials">Confirmar</button>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

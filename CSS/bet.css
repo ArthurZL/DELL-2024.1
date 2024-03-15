@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #2b0e92;
+    border-radius: 10px;
+    background-color: #e2e2e2;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
+}
+
+.wellcome {
+    text-align: center;
+    margin: 0 0 30px;
+}
+
+.inputs-numbers {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.number {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border: 1px solid #2b0e92;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Remove o incremento padrão dos inputs do tipo number, para os navegadores baseado em WebKit*/
+.number[type=number]::-webkit-inner-spin-button,
+.number[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+/* Remove o incremento padrão dos inputs do tipo number, para o FireFox*/
+.number[type=number] {
+    -moz-appearance: textfield;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.button {
+    margin: 10px 0 5px 0;
+    padding: 8px 15px;
+    border: 1px solid #2b0e92;
+    border-radius: 5px;
+    background-color: #ffffff;
+    cursor: pointer;
+    width: 50%;
+    box-shadow: inset -3px -3px 5px rgba(0, 0, 0, 0.4);
+    transition: box-shadow 0.2s ease;
+}
+
+.button:active {
+    box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.4);
+}
+
+.link{
+    color: #000000;
+    text-decoration: none;
+}
