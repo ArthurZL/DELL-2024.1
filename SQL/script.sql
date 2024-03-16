@@ -15,7 +15,8 @@ CREATE TABLE bet (
     user_id INT NOT NULL,
     registration_id INT NOT NULL,
     edition_id INT NOT NULL,
-    number INT NOT NULL
+    number INT NOT NULL,
+    winner BOOLEAN NULL DEFAULT 0
 );
 
 CREATE TABLE registration (

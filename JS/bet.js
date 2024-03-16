@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (data.error) {
                 alert(data.error);
             } else {
-                //window.location.reload();
+                window.location.reload();
             }
         })
         .catch(error => {
