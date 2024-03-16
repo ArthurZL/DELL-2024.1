@@ -59,6 +59,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         die("Error: CPF Não Encontrado");
     }
     
+    $result->free();
     $stmt->close();
 }
 

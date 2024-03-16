@@ -8,6 +8,7 @@ if( ! isset($_SESSION["user_id"])){
     die("Error: ID de Sessão Inválido");
 }
 
+$userID = $_SESSION["user_id"];
 $mysqli = require __DIR__ . "/database.php";
 
 $sql = "SELECT name 
@@ -21,9 +22,7 @@ if ( ! $stmt->prepare($sql)) {
     exit(); 
 }
 
-$user_id = $_SESSION["user_id"];
-
-$stmt->bind_param("i", $user_id);
+$stmt->bind_param("i", $userID);
 
 if( ! $stmt->execute()){
     error_log("Erro no SQL: " . $mysqli->error . " " . $mysqli->errno);
