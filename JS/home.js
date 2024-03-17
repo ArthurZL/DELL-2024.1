@@ -31,5 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Erro:', error);
             });
     });
+
+    
 });
 

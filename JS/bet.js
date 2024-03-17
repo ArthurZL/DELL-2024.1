@@ -1,7 +1,9 @@
+import { searchTrophy } from './util.js';
 
 document.addEventListener('DOMContentLoaded', function() {
 
     validateNumber();
+    generateIcon();
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -117,4 +119,19 @@ function generateRandomNumbers(min, max, count) {
     }
     
     return Array.from(numbers);
+}
+
+function generateIcon(){
+    fetch('../PHP/bet-trophy.php')
+    .then(response => response.json())
+    .then(data => {
+        const wins = data.wins;
+        let icons = '';
+        const maxIcons = wins > 10 ? 10 : wins;
+        for (let i = 0; i < maxIcons; i++) {
+            icons += searchTrophy();
+        }
+        document.querySelector('.img-container').innerHTML = icons;
+    })
+    .catch(error => console.error('Erro:', error));
 }
