@@ -10,8 +10,6 @@ if( ! isset($_SESSION["user_id"])){
 
 $mysqli = require __DIR__ . "/database.php";
 
-$mysqli->begin_transaction();
-
 // Matém as inserções atômicas, usado por conta das inserções com foreach
 $mysqli->autocommit(FALSE);
 
@@ -127,5 +125,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 }
 
 $mysqli->close();
+exit();
 
 ?>
