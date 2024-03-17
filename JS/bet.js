@@ -51,6 +51,15 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Erro:', error);
         });
     });
+
+    document.getElementById('random-surprise').addEventListener('click', function() {
+        let drawnNumbers = generateRandomNumbers(1, 50, 5);
+        
+        for (let i = 0; i < drawnNumbers.length; i++) {
+            // Busca o elemento com ID que começa com "n" e termina com valores de 1 até 5
+            document.getElementById(`n${i + 1}`).value = drawnNumbers[i];
+        }
+    });
 });
 
 
@@ -106,4 +115,20 @@ function validateAllFields() {
             });
         }
     });
+}
+
+function generateRandomNumbers(min, max, count) {
+    let numbers = new Set();
+    
+    while(numbers.size < count) {
+        /*LÓGICA:
+        Math.floor gera um número inteiro arredondando um flutuante para baixo, por isso de haver um "+ min" no final, garantido que possa haver os valores 1 e 50
+        Math.random gera números de no intervalo de 0 e 1
+        (max - min + 1) é a lógica de ajuste, o intervalo de 50 - 1 gera 49 números possíveis, assim adicionamos +1 para fechar os 50 valores possíveis desejados
+        */
+        let number = Math.floor(Math.random() * (max - min + 1)) + min;
+        numbers.add(number);
+    }
+    
+    return Array.from(numbers);
 }

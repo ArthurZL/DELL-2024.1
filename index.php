@@ -1,3 +1,12 @@
+<?php
+    $mysqli = require __DIR__ . "/PHP/database.php";
+    $resultUserr = $mysqli->query("SELECT 1 FROM userr LIMIT 1");
+    $resultEdition = $mysqli->query("SELECT 1 FROM edition LIMIT 1");
+    if ($resultUserr->num_rows == 0 && $resultEdition->num_rows == 0) {
+        require __DIR__ . "/PHP/beggin.php";
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -30,7 +30,7 @@ $stmt = $mysqli->prepare($sql);
 
 if ( ! $stmt->execute()) {
     error_log("Erro no SQL: " . $mysqli->error . " " . $mysqli->errno);
-    echo json_encode(["error" => "Erro de envio 5."]);
+    echo json_encode(["error" => "Erro de envio 5.1"]);
     exit();
 }
 
@@ -98,32 +98,64 @@ do {
 // Repete o DO até encontrar um vencedor aou até adicionar vinte e cinco novos números
 } while ( ! $foundWinner && $iterations < 25);
 
-if ($foundWinner) {
-    echo "Número de iterações: $iterations\n";
-    echo "Quantidade de vencedores: " . count($winners) . "\n";
-    foreach ($winners as $winner) {
-        $winnerData = $registrations[$winner];
-        echo "Sucesso: Registro $winnerData[registration_nr], Nome: $winnerData[name], CPF: $winnerData[cpf]\n";
-    }
-} else {
-    echo "Nenhum ganhador após as 25 rodadas de sorteio.\n";
-}
 
-echo "Números sorteados:\n";
-print_r($drawnNumbers);
-
-
-
-
-
-$sql = "SELECT number, COUNT(*) AS quantidade
+$sql = "SELECT number, COUNT(*) AS quantity
         FROM bet
         WHERE edition_id = (
             SELECT MAX(edition_id)
             FROM edition
         )
         GROUP BY number
-        ORDER BY quantidade DESC";
+        ORDER BY quantity DESC";
+
+$stmt = $mysqli->prepare($sql);
+
+if ( ! $stmt->execute()) {
+    error_log("Erro no SQL: " . $mysqli->error . " " . $mysqli->errno);
+    echo json_encode(["error" => "Erro de envio 5.2"]);
+    exit();
+}
+
+$result = $stmt->get_result();
+$data = [];
+
+// Só será falso ao tentar realizar o sorteio sem que tenha sido feito apostas
+if ($result->num_rows > 0) {    
+    while ($row = $result->fetch_assoc()) {
+        $data[] = [
+            'number' => $row['number'],
+            'quantity' => $row['quantity']
+        ];
+    }
+}
+
+
+$output = [
+    'iteration' => $foundWinner ? $iterations: $iterations - 1,
+    'countWinners' => count($winners),
+    'drawnNumbers' => $drawnNumbers,
+    'winners' => [],
+    'quantityNumbers' => $data
+];
+
+
+if ($foundWinner) {
+    foreach ($winners as $winner) {
+        $winnerData = $registrations[$winner];
+        array_push($output['winners'], [
+            'registration' => $winnerData['registration_nr'],
+            'name' => $winnerData['name'],
+            'cpf' => $winnerData['cpf']
+        ]);
+    }
+}
+
+$result->free();
+$stmt->close();
+
+
+$sql = "SELECT MAX(year) AS last_year 
+        FROM edition";
 
 $stmt = $mysqli->prepare($sql);
 
@@ -134,21 +166,36 @@ if ( ! $stmt->execute()) {
 }
 
 $result = $stmt->get_result();
+$row = $result->fetch_assoc();
+$lastYear = $row['last_year'];
+$newYear = (int)$lastYear + 1;
 
-if ($result->num_rows > 0) {
-    $data = [];
-    
-    while ($row = $result->fetch_assoc()) {
-        $data[] = [
-            'number' => $row['number'],
-            'quantidade' => $row['quantidade']
-        ];
-    }
-    
-    header('Content-Type: application/json');
-    echo json_encode($data);
+
+$stmt->close();
+
+$sql = "INSERT INTO edition (year)
+        VALUES (?)";
+
+$stmt = $mysqli->stmt_init();
+if ( ! $stmt->prepare($sql)) {
+    error_log("Erro no SQL: " . $mysqli->error . " " . $mysqli->errno);
+    echo json_encode(["error" => "Erro de envio 5."]);
+    exit(); 
 }
-exit();
 
+$stmt->bind_param("i", $newYear);
+
+if( ! $stmt->execute()){
+    $mysqli->rollback();
+    error_log("Erro no SQL: " . $mysqli->error . " " . $mysqli->errno);
+    echo json_encode(["error" => "Erro de envio 5."]);
+    exit(); 
+}
+
+$mysqli->commit();
+$stmt->close();
+
+echo json_encode($output);
+exit();
 
 ?>

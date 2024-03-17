@@ -7,7 +7,8 @@ CREATE TABLE userr (
     cpf VARCHAR(14) NOT NULL,
     name VARCHAR(255) NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
-    lvl_access INT NOT NULL
+    lvl_access INT NOT NULL,
+    wins INT NULL DEFAULT 0
 );
 
 CREATE TABLE bet (
@@ -15,8 +16,7 @@ CREATE TABLE bet (
     user_id INT NOT NULL,
     registration_id INT NOT NULL,
     edition_id INT NOT NULL,
-    number INT NOT NULL,
-    winner BOOLEAN NULL DEFAULT 0
+    number INT NOT NULL
 );
 
 CREATE TABLE registration (
