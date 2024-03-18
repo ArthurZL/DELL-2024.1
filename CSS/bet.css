@@ -44,6 +44,21 @@
     box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+.surprise{
+    width: 20px;
+    height: 20px;
+    color: #2b0e92;
+    border: 1px solid #2b0e92;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: inset -3px -3px 5px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.2s ease;
+}
+
+.surprise:active {
+    box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
 /* Remove o incremento padrão dos inputs do tipo number, para os navegadores baseado em WebKit*/
 .number[type=number]::-webkit-inner-spin-button,
 .number[type=number]::-webkit-outer-spin-button {
