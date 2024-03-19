@@ -40,6 +40,7 @@ if ( ! $stmt->prepare($sql)) {
     exit(); 
 }
 
+// Credenciais padrão para o usuário administrador
 $cpf = "00000000000";
 $name = "Administrador";
 $password_hash = password_hash("senhaforteadmin", PASSWORD_DEFAULT);

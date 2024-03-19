@@ -40,7 +40,12 @@ document.addEventListener('DOMContentLoaded', function() {
             alert("É necessário preencher os cinco campos");
             return;
         }
-
+        
+        /* LOGICA:
+        Cria um novo array através do map com cada elemento do array original, 
+        esse valores são convertidos para String para melhor manipulação do forms, 
+        o Number é uma manobrar para remover quaisquers sequências de zeros na frente dos numerais
+        */
         const nums = [
             formDataCheck.get('n1'), 
             formDataCheck.get('n2'), 
@@ -48,19 +53,15 @@ document.addEventListener('DOMContentLoaded', function() {
             formDataCheck.get('n4'), 
             formDataCheck.get('n5')
         ].map(num => String(Number(num))); 
-        /* LOGICA:
-        Cria um novo array através do map com cada elemento do array original, 
-        esse valores são convertidos para String para melhor manipulação do forms, 
-        o Number é uma manobrar para remover quaisquers sequências de zeros na frente dos numerais
-        */
        
-        // Set armazena valores distintos, se o tamanho dele for maior que o tamanho original, significa que há valores repetidos
+        // Armazena valores distintos, se o tamanho dele for maior que o tamanho original, significa que há valores repetidos
         const uniqueNums = new Set(nums);
         if (uniqueNums.size !== nums.length) {
             alert("Não podem haver números repetidos");
             return;
         }
 
+        // Adiciona a FormData o relacionamento do número recebido a uma chave que é construida de n1 até n5
         const formData = new FormData();
         nums.forEach((num, index) => {
             formData.append(`n${index + 1}`, num);
@@ -93,7 +94,7 @@ function validateNumber() {
         input.addEventListener('change', function() {
             // Especifica que value será um número decimal (base 10)
             var value = parseInt(this.value, 10);
-
+            // Valores menores que o permitido viram 1, assim como os maiores que o permitido viram 50
             if (value < 1) {
                 this.value = 1;
             } else if (value > 50) {
@@ -106,6 +107,7 @@ function validateNumber() {
 
 
 function generateRandomNumbers(minNum, maxNum, count) {
+    // Armazena valores distintos
     let numbers = new Set();
     
     while(numbers.size < count) {
@@ -127,6 +129,7 @@ function generateIcon(){
     .then(data => {
         const wins = data.wins;
         let icons = '';
+        // Exibirá até no máximo dez troféus
         const maxIcons = wins > 10 ? 10 : wins;
         for (let i = 0; i < maxIcons; i++) {
             icons += searchTrophy();

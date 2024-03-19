@@ -29,18 +29,18 @@ $stmt = $mysqli->prepare($sql);
 
 if ( ! $stmt->execute()) {
     error_log("Erro no SQL: " . $mysqli->error . " " . $mysqli->errno);
-    echo json_encode(["error" => "Erro de envio 5.1"]);
+    echo json_encode(["error" => "Erro de envio 6.1"]);
     exit();
 }
 
 $result = $stmt->get_result();
 
-$registrations = [];
+$personalInfos = [];
 while ($row = $result->fetch_assoc()) {
     // Verifica se o registration_id observado já existe no array $registraion
-    if ( ! isset($registrations[$row['registration_id']])) {
+    if ( ! isset($personalInfos[$row['registration_id']])) {
         // Esta é a etapa que garante que para cada registraion_id, haverá um array com as informações pessoais do apostar, assim como um subarray de números apostados
-        $registrations[$row['registration_id']] = [
+        $personalInfos[$row['registration_id']] = [
             'numbers' => [],
             'registration_nr' => $row['registration_nr'],
             'name' => $row['name'],
@@ -48,10 +48,10 @@ while ($row = $result->fetch_assoc()) {
         ];
     }
     // Para o registro_id sendo observado, será adicionado todos os números escolhidos pelo apostador
-    $registrations[$row['registration_id']]['numbers'][] = $row['number'];
+    $personalInfos[$row['registration_id']]['numbers'][] = $row['number'];
 }
 
-echo json_encode($registrations);
+echo json_encode($personalInfos);
 
 $result->free();
 $stmt->close();

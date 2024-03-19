@@ -21,38 +21,43 @@ document.addEventListener('DOMContentLoaded', function() {
         }, []).map(line => line.join(', ')).join('\n'); // O array de arrays é mapeado, separando os elementos por vírgulo e ao final adicionando uma quebra de linha
         document.getElementById('drawn-numbers').innerHTML = drawnNumbersFormatted.replace(/\n/g, '<br>'); // Substitui "\n" por "<br>" em virtude do HTML
 
-        const winnersContainer = document.getElementById('container-winners');
-        winnersContainer.innerHTML = '';
+        const containerWinners = document.getElementById('container-winners');
+        containerWinners.innerHTML = '';
         if (data.winners.length > 0) {
-            winnersContainer.classList.remove('text-center');
-            winnersContainer.classList.add('text-left');
+            // Boa prática de remoção de classe para evitar possíveis erros
+            containerWinners.classList.remove('text-center');
+            containerWinners.classList.add('text-left');
             // Para cada vencedor no array de winner será criado dinamicamente suas informações, ao adicionando o nó no container-winners
             data.winners.forEach((winner) => {
                 const winnerInfo = document.createElement('p');
                 winnerInfo.classList.add('winner-entry');
-                winnerInfo.innerHTML = `
+                winnerInfo.innerHTML = 
+                    `
                     <span class="label">Registro:</span><span class="value">${winner.registration}</span><br>
                     <span class="label">Nome:</span><span class="value">${winner.name}</span><br>
                     <span class="label">CPF:</span><span class="value">${winner.cpf}</span><br>
                     `;
-                winnersContainer.appendChild(winnerInfo);
+                containerWinners.appendChild(winnerInfo);
             });
         } else {
-            winnersContainer.classList.remove('text-left');
-            winnersContainer.classList.add('text-center');
+            // Boa prática de remoção de classe para evitar possíveis erros
+            containerWinners.classList.remove('text-left');
+            containerWinners.classList.add('text-center');
+            // Cria parágrafo e texto, então associa um ao outro
             const zeroWinners = document.createElement('p');
             zeroWinners.textContent = 'Sem Vencedores';
-            winnersContainer.appendChild(zeroWinners);
+            containerWinners.appendChild(zeroWinners);
         }
 
         const tbody = document.querySelector('.table-body');
         const quantityNumbers = data.quantityNumbers;
-        quantityNumbers.forEach(item => { 
+        // Para cada array dentro do array, cria uma linha e as duas células, associas os valores de números e quantidade, cria a classe, associa as tds com tr e por fim a tr com tbody
+        quantityNumbers.forEach(line => { 
             const tr = document.createElement('tr');
             const tdNumber = document.createElement('td');
             const tdQuantity = document.createElement('td');
-            tdNumber.textContent = item.number;
-            tdQuantity.textContent = item.quantity;
+            tdNumber.textContent = line.number;
+            tdQuantity.textContent = line.quantity;
             tdNumber.classList.add('column');
             tdQuantity.classList.add('column');
             tr.appendChild(tdNumber);

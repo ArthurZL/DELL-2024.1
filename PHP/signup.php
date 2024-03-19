@@ -4,6 +4,7 @@ session_start();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
+    // Validações extras de segurança além das existentes no JS
     if(empty($_POST["name"])){
         die("Campo Nome é requerido");
     }

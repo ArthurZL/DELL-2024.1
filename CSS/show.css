@@ -47,12 +47,6 @@
     text-overflow: ellipsis;
 }
 
-.line{
-    padding: 8px;
-    text-align: center;
-    border: 1px solid #2b0e92;
-}
-
 /* Configuração da barra de rolagem para os navegadores baseado em WebKit */
 ::-webkit-scrollbar {
     width: 8px;

@@ -30,9 +30,11 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $result = $stmt->get_result();
     $user = $result->fetch_assoc();
 
+    // Se o usuário que foi verificado através do CPF único existir, verifica-se se a senha é compatível
     if($user){
         if(password_verify($password, $user["password_hash"])){
 
+            // Cria as variáveis goblais e redireciona o usuário dependendo de seu level de acesso
             $_SESSION["user_id"] = $user["user_id"];
             $_SESSION["lvl_access"] = $user["lvl_access"];
             $lvl_access =  $_SESSION["lvl_access"];
@@ -45,18 +47,18 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
             }
             else{
                 header("Location: ../index.php");
-                die("Error: Nível de Acesso Inválido");
+                die("Erro: Nível de Acesso Inválido");
             }
 
             exit();
 
         } else {
             header("Location: ../index.php");
-            die("Error: Senha Inválida");
+            die("Erro: Senha Inválida");
         }
     } else {
         header("Location: ../index.php");
-        die("Error: CPF Não Encontrado");
+        die("Erro: CPF Não Encontrado");
     }
     
     $result->free();

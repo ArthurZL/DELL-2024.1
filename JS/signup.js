@@ -7,6 +7,7 @@ document.getElementById('form-credentials').addEventListener('submit', function(
     var password = document.getElementById('password').value;
     var confirmPassword = document.getElementById('confirm-password').value;
 
+    // Validações e exibição dos erros
     var errors = [];
 
     if (name.trim() === '') {

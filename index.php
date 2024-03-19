@@ -1,4 +1,5 @@
 <?php
+    // Quando a página é aberta pela primeira vez chama-se o código responsável pela criação da primeira edição e do usuário administrador
     $mysqli = require __DIR__ . "/PHP/database.php";
     $resultUserr = $mysqli->query("SELECT 1 FROM userr LIMIT 1");
     $resultEdition = $mysqli->query("SELECT 1 FROM edition LIMIT 1");

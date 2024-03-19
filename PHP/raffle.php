@@ -156,7 +156,7 @@ if ($foundWinner) {
         $stmtSelect = $mysqli->prepare($sqlSelect);
         if ( ! $stmtSelect) {
             error_log("Erro no SQL: " . $mysqli->error . " " . $mysqli->errno);
-            echo "Erro de envio 5.";
+            echo "Erro de envio 5.3";
             exit();
         }
 
@@ -176,7 +176,7 @@ if ($foundWinner) {
         $stmtUpdate = $mysqli->prepare($sqlUpdate);
         if ( ! $stmtUpdate) {
             error_log("Erro no SQL: " . $mysqli->error . " " . $mysqli->errno);
-            echo "Erro de envio 5.";
+            echo "Erro de envio 4";
             exit();
         }
 
@@ -184,7 +184,7 @@ if ($foundWinner) {
         if (!$stmtUpdate->execute()) {
             $mysqli->rollback();
             error_log("Erro no SQL: " . $mysqli->error . " " . $mysqli->errno);
-            echo "Erro de envio 5.";
+            echo "Erro de envio 5.5";
             exit();
         }
         $stmtUpdate->close();
@@ -201,7 +201,7 @@ $stmt = $mysqli->prepare($sql);
 
 if ( ! $stmt->execute()) {
     error_log("Erro no SQL: " . $mysqli->error . " " . $mysqli->errno);
-    echo json_encode(["error" => "Erro de envio 5."]);
+    echo json_encode(["error" => "Erro de envio 5.6"]);
     exit();
 }
 
@@ -219,7 +219,7 @@ $sql = "INSERT INTO edition (year)
 $stmt = $mysqli->stmt_init();
 if ( ! $stmt->prepare($sql)) {
     error_log("Erro no SQL: " . $mysqli->error . " " . $mysqli->errno);
-    echo json_encode(["error" => "Erro de envio 5."]);
+    echo json_encode(["error" => "Erro de envio 5.7"]);
     exit(); 
 }
 
@@ -228,7 +228,7 @@ $stmt->bind_param("i", $newYear);
 if( ! $stmt->execute()){
     $mysqli->rollback();
     error_log("Erro no SQL: " . $mysqli->error . " " . $mysqli->errno);
-    echo json_encode(["error" => "Erro de envio 5."]);
+    echo json_encode(["error" => "Erro de envio 5.8"]);
     exit(); 
 }
 

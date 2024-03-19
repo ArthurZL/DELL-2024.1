@@ -32,7 +32,7 @@ if( ! $stmt->execute()){
 
 $result = $stmt->get_result();
 if ($row = $result->fetch_assoc()) {
-    $wins = (int) $row['wins'];
+    $wins = (int)$row['wins'];
 }
 
 echo json_encode(['wins' => $wins]);
