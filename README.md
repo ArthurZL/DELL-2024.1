@@ -1,4 +1,4 @@
-# 2024LLED
+# PUCRS/DELL IT ACADEMY 2024 - Turma 20
 
 
 ## Resumo Técnico
@@ -81,4 +81,3 @@ O apostador será impedido de realizar a confirmação caso a quantidade de núm
 ![bet-validate2](https://github.com/ArthurZL/2024LLED/assets/71044771/7467382a-4048-46d3-b0f2-63c64ffc15de)
 
 
-## Notas de melhorias
