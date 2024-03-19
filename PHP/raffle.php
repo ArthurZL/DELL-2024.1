@@ -62,6 +62,9 @@ shuffle($orderedNumbers);
 // Com as posições randomizadas, seleciona os cinco primeiros, começando do index zero
 $drawnNumbers = array_slice($orderedNumbers, 0, 5);
 
+/* TESTAR SORTEIO
+$drawnNumbers = [1, 2, 3, 4, 5];
+*/
 
 $iterations = 0;
 $foundWinner = false;
@@ -98,7 +101,6 @@ do {
 // Repete o DO até encontrar um vencedor aou até adicionar vinte e cinco novos números
 } while ( ! $foundWinner && $iterations < 25);
 
-
 $sql = "SELECT number, COUNT(*) AS quantity
         FROM bet
         WHERE edition_id = (
@@ -131,7 +133,7 @@ if ($result->num_rows > 0) {
 
 
 $output = [
-    'iteration' => $foundWinner ? $iterations: $iterations - 1,
+    'iteration' => $iterations,
     'countWinners' => count($winners),
     'drawnNumbers' => $drawnNumbers,
     'winners' => [],

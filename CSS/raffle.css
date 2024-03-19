@@ -21,3 +21,7 @@
     background-color: #e2e2e2;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
 }
+
+.paragraph{
+    align-self: flex-start;
+}

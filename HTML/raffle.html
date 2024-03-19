@@ -5,12 +5,38 @@
     <title>Raffle</title>
     <link rel="stylesheet" href="../CSS/raffle.css?v=1.0">
     <script src="../JS/auth.js"></script>
-    <!-- <script type="module" src="../JS/raffle.js"></script> -->
+    <script type="module" src="../JS/raffle.js"></script>
 </head>
 <body>
     <div class="flex-container">
         <div class="container">
 
+            <p class="paragraph"><b>Número de Sorteios Extras: </b><span id="extra-draws"></span></p>
+            <br>
+
+            <p class="paragraph"><b>Número de Ganhadores: </b><span id="number-winners"></span></p>
+            <br>
+
+            <div><b>Números Sorteados</b></div>
+            <span id="drawn-numbers"></span>
+            <br>
+
+            <p><b>Vencedores</b></p>
+            <div id="container-winners"></div>
+            <br>
+            
+            <p><b>Estatísticas</b></p>
+                <table class="table-box">
+                    <thead>
+                        <tr>
+                            <th class="column">Número</th>
+                            <th class="column">Quantidade</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-body">
+                        <!-- Preenchido pelo AJAX -->
+                    </tbody>
+                </table>
         </div>
     </div>
 </body>
