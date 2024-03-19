@@ -1,6 +1,32 @@
 # 2024LLED
+
+
 ## Resumo Técnico
 Este projeto tem como objetivo simular o comportamento de um software de apostas e sorteios, utilizando para criação da interface gráfica HTML e CSS, JavaScript para o Front-end, PHP para o Back-end e MySQL como Banco de Dados. 
+
+
+## Como Configurar Seu Ambiente
+
+Este projeto foi desenvolvido em um ambiente de desenvolvimento local (localhost), para isso foi utilizado o software XAMPP, que pode ser baixado através do link https://www.apachefriends.org/pt_br/index.html.
+
+Após a instalação, recomenda-se executa-lo como administrador para evitar problemas de autorizações, em seguida ativa o Apache e MySQL.
+
+![xampp](https://github.com/ArthurZL/2024LLED/assets/71044771/ed565faa-6458-4abc-ac56-f9d1a7809c1f)
+
+Com eles ativos, acesse seu navegador de preferência e conecte-se ao phpmyadmin através da URL http://localhost/phpmyadmin/.
+
+Após isso é necessário executar o script SQL para criação do banco de dados, há duas formas de fazer isso. Você pode ou clicar no botão *SQL* na interface gráfica do phpmyadmin, copiar todo contudo contido no arquivo **script.sql** contido nos arquivos do código e executa-lo diretamente na interface através das teclas *CTRL + ENTER*, ou exportando o arquivo  **script.sql** através do botão *Exportar*.
+
+![BD-sql](https://github.com/ArthurZL/2024LLED/assets/71044771/c777ec26-7582-484b-8fbe-6cb589cc4a0d)
+
+![BD-exportar](https://github.com/ArthurZL/2024LLED/assets/71044771/148ca810-1289-472a-bf7a-ff3e6ef3764c)
+
+Após a criação das tabelas procura pela pasta htdocs, dentro da pasta xampp, por padrão a instalação é feita no caminho *C:\xampp\htdocs*, nessa pasta você extrairá o código que estará em .zip.
+
+Se tudo ocorreu bem, agora você será capaz de acessar a tela de login, basta digitar na URL de seu navegador http://localhost/2024LLED/index.php.
+
+Vale lembrar que caso você já possua previamente instalado, talvez as credenciais de acesso não estejam configuradas de acordo com o padrão de instalação, nesse caso será necessário alterar o conteúdo do arquivo **database.php** para deixa-lo de acordo com as suas configurações.
+
 
 ## Funcionalidades
 Para tentar criar uma simulação mais realista, optou-se pelo uso de uma tela de login. Esta tela possui como credenciais o CPF, que será único para cada usuário, e uma senha criptografada, além disso a tela conta com um botão entrar no sistema e um para se registrar.
@@ -54,7 +80,5 @@ O apostador será impedido de realizar a confirmação caso a quantidade de núm
 
 ![bet-validate2](https://github.com/ArthurZL/2024LLED/assets/71044771/7467382a-4048-46d3-b0f2-63c64ffc15de)
 
-
-## Como Configurar Seu Ambiente
 
 ## Notas de melhorias
