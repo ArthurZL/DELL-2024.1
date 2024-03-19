@@ -105,16 +105,16 @@ function validateNumber() {
 }
 
 
-function generateRandomNumbers(min, max, count) {
+function generateRandomNumbers(minNum, maxNum, count) {
     let numbers = new Set();
     
     while(numbers.size < count) {
         /*LÓGICA:
-        Math.floor gera um número inteiro arredondando um flutuante para baixo, por isso de haver um "+ min" no final, garantido que possa haver os valores 1 e 50
+        Math.floor gera um número inteiro arredondando um flutuante para baixo, por isso de haver um "+ minNum" no final, garantido que possa haver os valores 1 e 50
         Math.random gera números de no intervalo de 0 e 1
-        (max - min + 1) é a lógica de ajuste, o intervalo de 50 - 1 gera 49 números possíveis, assim adicionamos +1 para fechar os 50 valores possíveis desejados
+        (maxNum - minNum + 1) é a lógica de ajuste, o intervalo de 50 - 1 gera 49 números possíveis, assim adicionamos +1 para fechar os 50 valores possíveis desejados
         */
-        let number = Math.floor(Math.random() * (max - min + 1)) + min;
+        let number = Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
         numbers.add(number);
     }
     

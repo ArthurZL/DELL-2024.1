@@ -24,17 +24,41 @@ document.addEventListener('DOMContentLoaded', function() {
         const winnersContainer = document.getElementById('container-winners');
         winnersContainer.innerHTML = '';
         if (data.winners.length > 0) {
+            winnersContainer.classList.remove('text-center');
+            winnersContainer.classList.add('text-left');
+            // Para cada vencedor no array de winner será criado dinamicamente suas informações, ao adicionando o nó no container-winners
             data.winners.forEach((winner) => {
                 const winnerInfo = document.createElement('p');
-                winnerInfo.innerHTML = `Registro: ${winner.registration}<br>Nome: ${winner.name}<br>CPF: ${winner.cpf}<br>`;
+                winnerInfo.classList.add('winner-entry');
+                winnerInfo.innerHTML = `
+                    <span class="label">Registro:</span><span class="value">${winner.registration}</span><br>
+                    <span class="label">Nome:</span><span class="value">${winner.name}</span><br>
+                    <span class="label">CPF:</span><span class="value">${winner.cpf}</span><br>
+                    `;
                 winnersContainer.appendChild(winnerInfo);
             });
         } else {
-            // Caso não existam vencedores, exibe "Sem Vencedores"
-            const noWinnersMsg = document.createElement('p');
-            noWinnersMsg.textContent = 'Sem Vencedores';
-            winnersContainer.appendChild(noWinnersMsg);
+            winnersContainer.classList.remove('text-left');
+            winnersContainer.classList.add('text-center');
+            const zeroWinners = document.createElement('p');
+            zeroWinners.textContent = 'Sem Vencedores';
+            winnersContainer.appendChild(zeroWinners);
         }
+
+        const tbody = document.querySelector('.table-body');
+        const quantityNumbers = data.quantityNumbers;
+        quantityNumbers.forEach(item => { 
+            const tr = document.createElement('tr');
+            const tdNumber = document.createElement('td');
+            const tdQuantity = document.createElement('td');
+            tdNumber.textContent = item.number;
+            tdQuantity.textContent = item.quantity;
+            tdNumber.classList.add('column');
+            tdQuantity.classList.add('column');
+            tr.appendChild(tdNumber);
+            tr.appendChild(tdQuantity);
+            tbody.appendChild(tr);
+        });
     })
     .catch(error => {
         console.error('Erro:', error);

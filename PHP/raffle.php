@@ -119,12 +119,12 @@ if ( ! $stmt->execute()) {
 }
 
 $result = $stmt->get_result();
-$data = [];
+$quantityNumbers = [];
 
 // Só será falso ao tentar realizar o sorteio sem que tenha sido feito apostas
 if ($result->num_rows > 0) {    
     while ($row = $result->fetch_assoc()) {
-        $data[] = [
+        $quantityNumbers[] = [
             'number' => $row['number'],
             'quantity' => $row['quantity']
         ];
@@ -137,7 +137,7 @@ $output = [
     'countWinners' => count($winners),
     'drawnNumbers' => $drawnNumbers,
     'winners' => [],
-    'quantityNumbers' => $data
+    'quantityNumbers' => $quantityNumbers
 ];
 
 
@@ -149,12 +149,50 @@ if ($foundWinner) {
             'name' => $winnerData['name'],
             'cpf' => $winnerData['cpf']
         ]);
+
+        $sqlSelect =    "SELECT wins 
+                        FROM userr 
+                        WHERE cpf = ?";
+        $stmtSelect = $mysqli->prepare($sqlSelect);
+        if ( ! $stmtSelect) {
+            error_log("Erro no SQL: " . $mysqli->error . " " . $mysqli->errno);
+            echo "Erro de envio 5.";
+            exit();
+        }
+
+        $cpf = $winnerData['cpf'];
+        $stmtSelect->bind_param("s", $cpf);
+        $stmtSelect->execute();
+        $result = $stmtSelect->get_result();
+        $row = $result->fetch_assoc();
+        $currentWins = $row['wins'] ?? 0;
+        $stmtSelect->close();
+
+        $newWins = $currentWins + 1;
+
+        $sqlUpdate =    "UPDATE userr 
+                        SET wins = ? 
+                        WHERE cpf = ?";
+        $stmtUpdate = $mysqli->prepare($sqlUpdate);
+        if ( ! $stmtUpdate) {
+            error_log("Erro no SQL: " . $mysqli->error . " " . $mysqli->errno);
+            echo "Erro de envio 5.";
+            exit();
+        }
+
+        $stmtUpdate->bind_param("is", $newWins, $cpf);
+        if (!$stmtUpdate->execute()) {
+            $mysqli->rollback();
+            error_log("Erro no SQL: " . $mysqli->error . " " . $mysqli->errno);
+            echo "Erro de envio 5.";
+            exit();
+        }
+        $stmtUpdate->close();
     }
 }
 
 $result->free();
 $stmt->close();
-
 
 $sql = "SELECT MAX(year) AS last_year 
         FROM edition";

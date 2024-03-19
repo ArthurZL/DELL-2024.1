@@ -25,3 +25,57 @@
 .paragraph{
     align-self: flex-start;
 }
+
+.format {
+    vertical-align: top;
+    display: inline-block;
+}
+
+.text-center {
+    text-align: center;
+    width: 100%;
+}
+
+.text-left {
+    text-align: left;
+    width: 100%;
+}
+
+.winner-entry {
+    margin-bottom: 1em;
+}
+
+/* Vai remover o espaço de 1em no final do último parágrafo */
+.winner-entry:last-child {
+    margin-bottom: 0;
+}
+
+.label {
+    display: inline-block;
+    width: 70px;
+}
+
+.value {
+    display: inline-block;
+    width: 200px;
+}
+
+.table-box {
+    width: 100%;
+    border: 1px solid #2b0e92;
+    border-collapse: separate;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.column{
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #2b0e92;
+    background-color: #e2e2e2;
+    min-width: 100px;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

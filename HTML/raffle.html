@@ -5,7 +5,7 @@
     <title>Raffle</title>
     <link rel="stylesheet" href="../CSS/raffle.css?v=1.0">
     <script src="../JS/auth.js"></script>
-    <script type="module" src="../JS/raffle.js"></script>
+    <script src="../JS/raffle.js"></script>
 </head>
 <body>
     <div class="flex-container">
@@ -22,21 +22,23 @@
             <br>
 
             <p><b>Vencedores</b></p>
-            <div id="container-winners"></div>
+            <div id="container-winners" class="format">
+                <!-- Preenchido pelo JS -->
+            </div>
             <br>
             
             <p><b>Estatísticas</b></p>
-                <table class="table-box">
-                    <thead>
-                        <tr>
-                            <th class="column">Número</th>
-                            <th class="column">Quantidade</th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-body">
-                        <!-- Preenchido pelo AJAX -->
-                    </tbody>
-                </table>
+            <table class="table-box">
+                <thead>
+                    <tr>
+                        <th class="column">Número</th>
+                        <th class="column">Quantidade</th>
+                    </tr>
+                </thead>
+                <tbody class="table-body">
+                    <!-- Preenchido pelo JS -->
+                </tbody>
+            </table>
         </div>
     </div>
 </body>
