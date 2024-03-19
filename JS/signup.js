@@ -18,6 +18,10 @@ document.getElementById('form-credentials').addEventListener('submit', function(
         errors.push("Campo CPF é requerido.");
     }
 
+    if (password.trim() === '') {
+        errors.push("Campo Senha é requerido.");
+    }
+
     if (password !== confirmPassword) {
         errors.push("Senhas devem ser correspondentes.");
     }

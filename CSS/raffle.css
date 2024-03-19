@@ -20,6 +20,8 @@
     border-radius: 10px;
     background-color: #e2e2e2;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
+    max-height: calc(100vh - 175px);
+    overflow-y: auto;
 }
 
 .paragraph{

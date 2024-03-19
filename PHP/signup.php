@@ -13,6 +13,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         die("Campo CPF é requerido");
     }
 
+    if(empty($_POST["password"])){
+        die("Campo Senha é requerido");
+    }
+
     if($_POST["confirm-password"] !== $_POST["password"]){
         die("Senhas devem ser correspondentes");
     }
