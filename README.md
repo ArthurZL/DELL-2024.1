@@ -2,7 +2,9 @@
 
 
 ## Resumo Técnico
-Este projeto tem como objetivo simular o comportamento de um software de apostas e sorteios, utilizando para criação da interface gráfica HTML e CSS, JavaScript para o Front-end, PHP para o Back-end e MySQL como Banco de Dados. 
+Este projeto foi desenvolvido como parte do processo seletivo da DELL, realizado em parceria com Centro de Inovação da PUCRS. O projeto a seguir foi um dos selecionados para as etapas seguintes do processo de seleção dos candidatos.
+
+O projeto tem como objetivo simular o comportamento de um software de apostas e sorteios, utilizando para criação da interface gráfica HTML e CSS, JavaScript para o Front-end, PHP para o Back-end e MySQL como Banco de Dados. 
 
 
 ## Como Configurar Seu Ambiente
