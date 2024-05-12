@@ -1,0 +1,81 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #2b0e92;
+    border-radius: 10px;
+    background-color: #e2e2e2;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
+}
+
+.login-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    margin-right: 20px;
+}
+
+.input {
+    margin: 10px 0;
+    padding: 3px;
+    border: 1px solid #2b0e92;
+    border-radius: 5px;
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.forgot-password{
+    text-align: left;
+    width: 100%;
+
+}
+
+.credentials {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.button {
+    margin: 5px 0;
+    padding: 8px 15px;
+    border: 1px solid #2b0e92;
+    border-radius: 5px;
+    background-color: #ffffff;
+    cursor: pointer;
+    width: 100px;
+    box-shadow: inset -3px -3px 5px rgba(0, 0, 0, 0.4);
+    transition: box-shadow 0.2s ease;
+}
+
+.button:active {
+    box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.4);
+}
+
+.link {
+    color: #000000;
+    text-decoration: none;
+}

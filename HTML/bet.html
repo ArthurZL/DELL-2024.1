@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bet</title>
+    <link rel="stylesheet" href="../CSS/bet.css?v=1.0">
+    <script src="../JS/auth.js"></script>
+    <script type="module" src="../JS/bet.js"></script>
+</head>
+<body>
+    <div class="flex-container">
+        <div class="container">
+            <section class="img-container">
+                <!-- Preenchido pelo JS -->
+            </section>
+            <header class="wellcome">
+                <h1>Bem-vindo</h1>
+                <br>
+                <h1 class="name"></h1>
+            </header>
+            <section class="button-container">
+
+                <form id="form-numbers" class="inputs-numbers">
+                    <input id="n1" class="number" type="number" min="1" max="50" name="n1"/>
+                    <input id="n2" class="number" type="number" min="1" max="50" name="n2"/>
+                    <input id="n3" class="number" type="number" min="1" max="50" name="n3"/>
+                    <input id="n4" class="number" type="number" min="1" max="50" name="n4"/>
+                    <input id="n5" class="number" type="number" min="1" max="50" name="n5"/>
+                    <button id="random-surprise" class="surprise" type="button">S</button>  
+                </form>              
+
+                <button id="submit-button" class="button" type="submit" form="form-numbers">Apostar</button>
+                
+            </section>
+        </div>
+    </div>
+</body>
+</html>
